@@ -1,0 +1,69 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+header nav ul li {
+    margin: 0 1rem;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+main  {
+    justify-content: left;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    gap: 1rem;
+    padding: 1rem;
+    flex: 1;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+.materias{
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr;
+    padding: 1;
+    margin: 0 auto 0 0;
+}
+
+.mat_img{
+    border-radius: 10%;
+    width: 300px;
+    height: 320px;
+}
+
+aside {
+    height: 80%;
+    background-color: #f4f4f4;
+    padding: 1rem;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+

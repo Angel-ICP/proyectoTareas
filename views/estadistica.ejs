@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadistica</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Tus tareas</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="#">Sobre Nosotros</a></li>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container mt-5">
+        <h1 class="text-center">Gestión de Tareas</h1>
+        <div class="d-flex justify-content-end mb-3">
+          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addEstadistica">Añadir Trabajo</button>
+        </div>
+        <table class="table table-border">
+            <thead class="thead-dark">
+                <tr>
+                    <td>ID</td>
+                    <td>Trabajo</td>
+                    <td>Fecha de entrega</td>
+                    <td>Estado</td>
+                    <td>Calificacion</td>
+                </tr>
+            </thead>
+            <tbody>
+                <% esta.forEach(materiaEsta=> { %>
+                    <tr>
+                        <td><%= materiaEsta.id %></td>
+                        <td><%= materiaEsta.nombre %></td>
+                        <td><%= materiaEsta.fecha %> </td>
+                        <td><%= materiaEsta.estado %></td>
+                        <td><%= materiaEsta.calificacion %></td>
+                        <td>
+                            <button class="btn btn-warning btn-sm" data-toggle="estadis"
+                                data-target="#editEstadistica<%= materiaEsta.id %>">Editar</button>
+                            <a href="/estadistica/delete/<%= materiaEsta.id %>" onclick="deleteEstadistica( materiaEsta.id )"
+                                class="btn btn-danger btn-sm">Borrar</a>
+                        </td>
+                    </tr>
+
+
+                    <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal para agregar proveedor -->
+  <div class="modal fade" id="addEstadistica" tabindex="-1" role="dialog" aria-labelledby="addEstadisticaModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addEstadisticaModalLabel">Agregar Proveedor</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="/estadistica/add" method="POST">
+            <div class="form-group">
+              <label for="nombre">Nombre del trabajo:</label>
+              <input type="text" class="form-control" id="nombre" name="nombre" required>
+            </div>
+            <div class="form-group">
+              <label for="fecha">Fecha de entrega:</label>
+              <input type="date" class="form-control" id="fecha" name="fecha" required>
+            </div>
+            <div class="form-group">
+              <label for="estado">Estado del trabajo:</label>
+              <select id="estado" name="estado" required>
+                <option value="pendiente">pendiente</option>
+                <option value="entregado">entregado</option>
+                <option value="no entregado">no entregado</option>
+            </select>
+            </div>
+            <div class="form-group">
+              <label for="calificacion">Calificacion:</label>
+              <input type="number" class="form-control" id="calificacion" name="calificacion" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Agregar</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <footer>
+        <p>&copy; 2024 Mi Sitio Web. Todos los derechos reservados.</p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+
+</html>
