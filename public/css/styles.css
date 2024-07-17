@@ -40,6 +40,16 @@ main  {
     max-width: 1500px;
     margin: 0 auto;
 }
+.estadistica {
+    justify-content: left;
+    display: grid;
+    grid-template-columns: 4fr;
+    gap: 1rem;
+    padding: 1rem;
+    flex: 1;
+    max-width: 1500px;
+    margin: 0 auto;
+}
 
 .materias{
     display: grid;

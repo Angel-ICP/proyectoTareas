@@ -3,6 +3,7 @@ const db = require('../db');
 // Obtener todos los trabajos
 exports.getAllEstadistica = (req, res) => {
     db.query('SELECT * FROM estadistica', (err, results) => {
+        
         if (err) {
             return res.status(500).json({ error: err.message });
         }
