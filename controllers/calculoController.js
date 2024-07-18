@@ -1,47 +1,47 @@
 const db = require('../db');
 
 // Obtener todos los trabajos
-exports.getAllEstadistica = (req, res) => {
-    db.query('SELECT * FROM estadistica', (err, results) => {
+exports.getAllCalculo = (req, res) => {
+    db.query('SELECT * FROM calculo', (err, results) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
-        res.render('estadistica', { esta: results });
+        res.render('calculo', { calculo: results });
     });
 };
 
 // Añadir un trabajo nuevo
-exports.addEstadistica = (req, res) => {
+exports.addCalculo = (req, res) => {
     const { nombre, fecha, fecha_termina, estado, parcial, calificacion, valor_cal } = req.body;
     const newTrabajo = { nombre, fecha, fecha_termina, estado, parcial, calificacion, valor_cal };
-    db.query('INSERT INTO estadistica SET ?', newTrabajo, (err, results) => {
+    db.query('INSERT INTO calculo SET ?', newTrabajo, (err, results) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
-        res.redirect('/estadistica');
+        res.redirect('/calculo');
     });
 };
 
 // Editar un trabajo
-exports.editEstadistica = (req, res) => {
+exports.editCalculo = (req, res) => {
     const { id } = req.params;
     const { nombre, fecha, fecha_termina, estado, parcial, calificacion, valor_cal  } = req.body;
     const updatedTrabajo = {nombre, fecha, fecha_termina, estado, parcial, calificacion, valor_cal };
-    db.query('UPDATE estadistica SET ? WHERE id = ?', [updatedTrabajo, id], (err, results) => {
+    db.query('UPDATE calculo SET ? WHERE id = ?', [updatedTrabajo, id], (err, results) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
-        res.redirect('/estadistica');
+        res.redirect('/calculo');
     });
 };
 
 // Borrar un trabajo
-exports.deleteEstadistica = (req, res) => {
+exports.deleteCalculo = (req, res) => {
     const { id } = req.params;
-    db.query('DELETE FROM estadistica WHERE id = ?', [id], (err, results) => {
+    db.query('DELETE FROM calculo WHERE id = ?', [id], (err, results) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
-        res.redirect('/estadistica');
+        res.redirect('/calculo');
     });
 };
