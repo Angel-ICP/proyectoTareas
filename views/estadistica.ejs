@@ -9,9 +9,15 @@
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 
-<body>
+<body class="texto" style="
+background-image: url(https://cdn.wallpapersafari.com/66/89/piUObg.jpg);
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center center;
+
+">
   <header>
-    <h1>Tus tareas</h1>
+    <h1>Estadistica</h1>
     <nav>
       <ul>
         <li><a href="/">Inicio</a></li>
@@ -22,14 +28,14 @@
     </nav>
   </header>
   
-  <main class="estadistica">
+  <main class=" estadistica">
   <div class="container mt-5">
     <h1 class="text-center">Gestión de Tareas</h1>
     <div class="d-flex justify-content-end mb-3">
       <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addEstadistica">Añadir
         Trabajo</button>
     </div>
-    <table class="table table-border">
+    <table class="texto table table-border">
       <thead class="thead-dark">
         <tr>
           <td>ID</td>
@@ -57,7 +63,7 @@
               <button class="btn btn-warning btn-sm" data-toggle="modal"
                 data-target="#editEstadistica<%= materiaEsta.id %>">Editar</button>
               <a href="/estadistica/delete/<%= materiaEsta.id %>" onclick="deleteEstadistica( materiaEsta.id )"
-                class="btn btn-danger btn-sm">Borrar</a>
+                class="btn btn-primary btn-sm">Borrar</a>
             </td>
           </tr>
 
@@ -71,7 +77,7 @@
   <div class="modal fade" id="addEstadistica" tabindex="-1" role="dialog" aria-labelledby="addEstadisticaModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
+      <div style="background-color: rgba(190, 78, 100, 0.89);"  class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="addEstadisticaModalLabel">Agregar Proveedor</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">

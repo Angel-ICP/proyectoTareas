@@ -10,13 +10,13 @@
 </head>
 
 <body class="texto" style=" 
-background-image: url(https://wallpapercave.com/wp/wp7930278.png);
+background-image: url(https://i.pinimg.com/originals/0c/d5/e1/0cd5e18c9186b79a746c0987447e98c8.jpg);
 background-size: cover;
 background-repeat: no-repeat;
 background-position: center center;
 ">
   <header>
-    <h1>Calculo</h1>
+    <h1>Programacion</h1>
     <nav>
       <ul>
         <li><a href="/">Inicio</a></li>
@@ -48,20 +48,20 @@ background-position: center center;
         </tr>
       </thead>
       <tbody>
-        <% calculo.forEach(materiaCalculo=> { %>
+        <% programacion.forEach(materiaProg=> { %>
           <tr>
-            <td> <%= materiaCalculo.id %> </td>
-            <td> <%= materiaCalculo.nombre %> </td>
-            <td> <%= materiaCalculo.fecha %> </td>
-            <td> <%= materiaCalculo.fecha_termina %> </td>
-            <td> <%= materiaCalculo.estado %> </td>
-            <td> <%= materiaCalculo.parcial %> </td>
-            <td> <%= materiaCalculo.calificacion %> </td>
-            <td> <%= materiaCalculo.valor_cal %> </td>
+            <td> <%= materiaProg.id %> </td>
+            <td> <%= materiaProg.nombre %> </td>
+            <td> <%= materiaProg.fecha %> </td>
+            <td> <%= materiaProg.fecha_termina %> </td>
+            <td> <%= materiaProg.estado %> </td>
+            <td> <%= materiaProg.parcial %> </td>
+            <td> <%= materiaProg.calificacion %> </td>
+            <td> <%= materiaProg.valor_cal %> </td>
             <td>
               <button class="btn btn-warning btn-sm" data-toggle="modal"
-                data-target="#editCalculo<%= materiaCalculo.id %>">Editar</button>
-              <a href="/calculo/delete/<%= materiaCalculo.id %>"
+                data-target="#editCalculo<%= materiaProg.id %>">Editar</button>
+              <a href="/calculo/delete/<%= materiaProg.id %>"
                 class="btn btn-danger btn-sm">Borrar</a>
             </td>
           </tr>
@@ -84,7 +84,7 @@ background-position: center center;
           </button>
         </div>
         <div class="modal-body">
-          <form action="/calculo/add" method="POST">
+          <form action="/programacion/add" method="POST">
             <div class="form-group">
               <label for="nombre">Nombre del trabajo:</label>
               <input type="text" class="form-control" id="nombre" name="nombre" required>
@@ -133,9 +133,9 @@ background-position: center center;
   </div>
 
   <!-- Modal para editar trabajo -->
-  <% calculo.forEach(materiaCalculo=> { %>
+  <% programacion.forEach(materiaProg=> { %>
 
-  <div class="modal fade" id="editCalculo<%= materiaCalculo.id %>" tabindex="-1" role="dialog"
+  <div class="modal fade" id="editCalculo<%= materiaProg.id %>" tabindex="-1" role="dialog"
     aria-labelledby="editCalculoLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -146,42 +146,42 @@ background-position: center center;
           </button>
         </div>
         <div class="modal-body">
-          <form action="/calculo/edit/<%= materiaCalculo.id %>" method="POST">
+          <form action="/programacion/edit/<%= materiaProg.id %>" method="POST">
             <div class="form-group">
               <label for="nombre">Nombre del trabajo:</label>
-              <input type="text" class="form-control" id="nombre" value="<%= materiaCalculo.nombre %>" name="nombre" required>
+              <input type="text" class="form-control" id="nombre" value="<%= materiaProg.nombre %>" name="nombre" required>
             </div>
             <div class="form-group">
               <label for="fecha">Fecha de Inicio:</label>
-              <input type="date" class="form-control" id="fecha" value="<%= materiaCalculo.fecha %>" name="fecha" required>
+              <input type="date" class="form-control" id="fecha" value="<%= materiaProg.fecha %>" name="fecha" required>
             </div>
             <div class="form-group">
               <label for="fecha_termina">Fecha de Entrega:</label>
-              <input type="date" class="form-control" id="fecha_termina" value="<%= materiaCalculo.fecha_termina %>" name="fecha_termina" required>
+              <input type="date" class="form-control" id="fecha_termina" value="<%= materiaProg.fecha_termina %>" name="fecha_termina" required>
             </div>
             <div class="form-group">
               <label for="estado" >Estado del trabajo:</label>
               <select id="estado" name="estado" required>
-                <option value="Pendiente" <%= materiaCalculo.estado = 'Pendiente' ? 'selected' : '' %>>Pendiente</option>
-                <option value="Entregado" <%= materiaCalculo.estado = 'Entregado' ? 'selected' : '' %>>Entregado</option>
-                <option value="No Entregado" <%= materiaCalculo.estado = 'No Entregado' ? 'selected' : '' %>>No Entregado</option>
+                <option value="Pendiente" <%= materiaProg.estado = 'Pendiente' ? 'selected' : '' %>>Pendiente</option>
+                <option value="Entregado" <%= materiaProg.estado = 'Entregado' ? 'selected' : '' %>>Entregado</option>
+                <option value="No Entregado" <%= materiaProg.estado = 'No Entregado' ? 'selected' : '' %>>No Entregado</option>
             </select>
             </div>
             <div class="form-group">
               <label for="parcial" >Estado del trabajo:</label>
               <select id="parcial" name="parcial" required>
-                <option value="1" <%= materiaCalculo.parcial = '1' ? 'selected' : '' %>>1</option>
-                <option value="2" <%= materiaCalculo.parcial = '2' ? 'selected' : '' %>>2</option>
-                <option value="3" <%= materiaCalculo.parcial = '3' ? 'selected' : '' %>>3</option>
+                <option value="1" <%= materiaProg.parcial = '1' ? 'selected' : '' %>>1</option>
+                <option value="2" <%= materiaProg.parcial = '2' ? 'selected' : '' %>>2</option>
+                <option value="3" <%= materiaProg.parcial = '3' ? 'selected' : '' %>>3</option>
             </select>
             </div>
             <div class="form-group">
               <label for="calificacion">Calificacion:</label>
-              <input type="number" class="form-control" id="calificacion" value="<%= materiaCalculo.calificacion %>" name="calificacion" required>
+              <input type="number" class="form-control" id="calificacion" value="<%= materiaProg.calificacion %>" name="calificacion" required>
             </div>
             <div class="form-group">
               <label for="valor_cal">Calificacion:</label>
-              <input type="number" class="form-control" id="valor_cal" value="<%= materiaCalculo.valor_cal %>" name="valor_cal" required>
+              <input type="number" class="form-control" id="valor_cal" value="<%= materiaProg.valor_cal %>" name="valor_cal" required>
             </div>
 
             <button type="submit" class="btn btn-primary">Editar</button>
