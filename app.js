@@ -1,20 +1,36 @@
+// app.js
 const express = require('express');
-const path = require('path');
-const router = require('./router/routes'); // Import the routes module
+const session = require('express-session');
+const bodyParser = require('body-parser');
+const path = require('path'); 
 const app = express();
 const port = 3000;
 
-// Configurar el motor de vistas EJS
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// Configurar archivos estáticos
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(session({
+  secret: 'secreto',
+  resave: false,
+  saveUninitialized: false,
+  cookie:{
+        maxAge: 300000
+  }
+}));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Ruta principal
-app.use('/', router);
+const loginRoutes = require('./router/login');
+const router = require('./router/routes');
+
+app.use('/login', loginRoutes);
+app.use('/index', router);
+
+app.get('/', (req, res) => {
+  res.redirect('/login');
+});
+
 
 
 app.listen(port, () => {

@@ -78,6 +78,10 @@ main  {
     height: 320px;
 }
 
+.modal1{
+    background-color: rgba(167, 58, 80, 0.89);
+}
+
 aside {
     height: 80%;
     background-color: #f4f4f4;

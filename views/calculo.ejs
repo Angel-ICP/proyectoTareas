@@ -19,10 +19,10 @@ background-position: center center;
     <h1>Calculo</h1>
     <nav>
       <ul>
-        <li><a href="/">Inicio</a></li>
-        <li><a href="#">Sobre Nosotros</a></li>
-        <li><a href="#">Servicios</a></li>
-        <li><a href="#">Contacto</a></li>
+        <li><a href="/index">Inicio</a></li>
+        <!-- <li><a href="#">Sobre Nosotros</a></li>
+        <li><a href="#">Servicios</a></li> -->
+        <li><a href="/index/logout">Cerra Sesion</a></li>
       </ul>
     </nav>
   </header>
@@ -61,7 +61,7 @@ background-position: center center;
             <td>
               <button class="btn btn-warning btn-sm" data-toggle="modal"
                 data-target="#editCalculo<%= materiaCalculo.id %>">Editar</button>
-              <a href="/calculo/delete/<%= materiaCalculo.id %>"
+              <a href="/index/calculo/delete/<%= materiaCalculo.id %>"
                 class="btn btn-danger btn-sm">Borrar</a>
             </td>
           </tr>
@@ -84,7 +84,7 @@ background-position: center center;
           </button>
         </div>
         <div class="modal-body">
-          <form action="/calculo/add" method="POST">
+          <form action="/index/calculo/add" method="POST">
             <div class="form-group">
               <label for="nombre">Nombre del trabajo:</label>
               <input type="text" class="form-control" id="nombre" name="nombre" required>
@@ -138,7 +138,7 @@ background-position: center center;
   <div class="modal fade" id="editCalculo<%= materiaCalculo.id %>" tabindex="-1" role="dialog"
     aria-labelledby="editCalculoLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
+      <div style="background-color: rgba(131, 131, 170, 0.849);" class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="editCalculoLabel">Editar Proveedor</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -146,7 +146,7 @@ background-position: center center;
           </button>
         </div>
         <div class="modal-body">
-          <form action="/calculo/edit/<%= materiaCalculo.id %>" method="POST">
+          <form action="/index/calculo/edit/<%= materiaCalculo.id %>" method="POST">
             <div class="form-group">
               <label for="nombre">Nombre del trabajo:</label>
               <input type="text" class="form-control" id="nombre" value="<%= materiaCalculo.nombre %>" name="nombre" required>
