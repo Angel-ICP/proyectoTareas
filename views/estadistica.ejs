@@ -20,10 +20,10 @@ background-position: center center;
     <h1>Estadistica</h1>
     <nav>
       <ul>
-        <li><a href="/index">Inicio</a></li>
+        <li><a href="/proyecto">Inicio</a></li>
         <!-- <li><a href="#">Sobre Nosotros</a></li>
         <li><a href="#">Servicios</a></li> -->
-        <li><a href="/index/logout">Cerra Sesion</a></li>
+        <li><a href="/proyecto/logout">Cerrar Sesion</a></li>
       </ul>
     </nav>
   </header>
@@ -62,7 +62,7 @@ background-position: center center;
             <td>
               <button class="btn btn-warning btn-sm" data-toggle="modal"
                 data-target="#editEstadistica<%= materiaEsta.id %>">Editar</button>
-              <a href="/index/estadistica/delete/<%= materiaEsta.id %>" onclick="deleteEstadistica( materiaEsta.id )"
+              <a href="/proyecto/estadistica/delete/<%= materiaEsta.id %>" onclick="deleteEstadistica( materiaEsta.id )"
                 class="btn btn-primary btn-sm">Borrar</a>
             </td>
           </tr>
@@ -85,7 +85,7 @@ background-position: center center;
           </button>
         </div>
         <div class="modal-body">
-          <form action="/index/estadistica/add" method="POST">
+          <form action="/proyecto/estadistica/add" method="POST">
             <div class="form-group">
               <label for="nombre">Nombre del trabajo:</label>
               <input type="text" class="form-control" id="nombre" name="nombre" required>
@@ -139,7 +139,7 @@ background-position: center center;
   <div class="modal fade" id="editEstadistica<%= materiaEsta.id %>" tabindex="-1" role="dialog"
     aria-labelledby="editEstadisticaLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <div  style="background-color: rgba(167, 58, 80, 0.89);" class="modal-content">
+      <div style="background-color: rgba(167, 58, 80, 0.89);"  class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="editEstadisticaLabel">Editar Proveedor</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -147,7 +147,7 @@ background-position: center center;
           </button>
         </div>
         <div class="modal-body">
-          <form action="/index/estadistica/edit/<%= materiaEsta.id %>" method="POST">
+          <form action="/proyecto/estadistica/edit/<%= materiaEsta.id %>" method="POST">
             <div class="form-group">
               <label for="nombre">Nombre del trabajo:</label>
               <input type="text" class="form-control" id="nombre" value="<%= materiaEsta.nombre %>" name="nombre" required>

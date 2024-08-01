@@ -15,7 +15,7 @@ exports.loginUser = (req, res) => {
         if (err) throw err;
         if (match) {
           req.session.user = user;
-          res.redirect('/index');
+          res.redirect('/proyecto');
         } else {
           res.render('login', { message: 'Usuario o contraseña incorrectos' });
         }
@@ -28,8 +28,8 @@ exports.loginUser = (req, res) => {
 
 exports.createUser = (req, res) => {
   const { username, password } = req.body;
-  console.log('username:', username); 
-  console.log('password:', password);  
+  console.log('username:', username);  // Agrega esto
+  console.log('password:', password);  // Agrega esto
 
   if (!username || !password) {
     res.render('login', { message: 'Username y password son requeridos' });

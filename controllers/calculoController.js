@@ -18,7 +18,7 @@ exports.addCalculo = (req, res) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
-        res.redirect('/index/calculo');
+        res.redirect('/proyecto/calculo');
     });
 };
 
@@ -31,7 +31,7 @@ exports.editCalculo = (req, res) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
-        res.redirect('/index/calculo');
+        res.redirect('/proyecto/calculo');
     });
 };
 
@@ -42,6 +42,6 @@ exports.deleteCalculo = (req, res) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
-        res.redirect('/index/calculo');
+        res.redirect('/proyecto/calculo');
     });
 };

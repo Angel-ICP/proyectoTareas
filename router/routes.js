@@ -4,9 +4,7 @@ const estadistica = require('../controllers/estadisticaController.js');
 const calculo = require('../controllers/calculoController.js');
 const programacion = require('../controllers/progController.js');
 
-// Ruta para obtener todos los proveedores
-
-
+// Ruta para obtener todos los trabajos
 function isAuthenticated(req, res, next) {
   if (req.session.user) {
   return next();
@@ -14,14 +12,23 @@ function isAuthenticated(req, res, next) {
   res.redirect('/login');
   }
  }
-//  router.get('/', isAuthenticated, productController.getProducts);
  
-
 
 // Ruta Principal
 router.get('/', isAuthenticated, (req, res) => {
     res.render('index', { title: 'Mi Proyecto Parcial 2', routes: router });
   });
+
+  // Ruta para logout
+router.get('/logout', (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      return res.redirect('/');
+    }
+    res.clearCookie('connect.sid');
+    res.redirect('/login');
+  });
+});
 
 
 /////////rutas de estadistica//////////////
@@ -35,7 +42,6 @@ router.post('/estadistica/edit/:id', isAuthenticated, estadistica.editEstadistic
 router.get('/estadistica/delete/:id', isAuthenticated, estadistica.deleteEstadistica);
   
 
-
 /////////rutas de calculo//////////////
 // Ruta para obtener todos los trabajos
 router.get('/calculo', isAuthenticated, calculo.getAllCalculo);
@@ -45,9 +51,7 @@ router.post('/calculo/add', isAuthenticated, calculo.addCalculo);
 router.post('/calculo/edit/:id', isAuthenticated, calculo.editCalculo);
 // Ruta para borrar un trabajo
 router.get('/calculo/delete/:id', isAuthenticated, calculo.deleteCalculo);
-
   
-
 
 
 /////////rutas de calculo//////////////
@@ -59,14 +63,6 @@ router.post('/programacion/add', isAuthenticated, programacion.addProgramacion);
 router.post('/programacion/edit/:id', isAuthenticated, programacion.editProgramacion);
 // Ruta para borrar un trabajo
 router.get('/programacion/delete/:id', isAuthenticated, programacion.deleteProgramacion);
-
-
-// Ruta para cerrar sesión
-router.get('/logout', (req, res) => {
-  req.session.destroy((err) => {
-    if (err) throw err;
-    res.redirect('/login');
-  });
-});
+  
 
 module.exports = router;

@@ -18,7 +18,7 @@ exports.addEstadistica = (req, res) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
-        res.redirect('/index/estadistica');
+        res.redirect('/proyecto/estadistica');
     });
 };
 
@@ -31,7 +31,7 @@ exports.editEstadistica = (req, res) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
-        res.redirect('/index/estadistica');
+        res.redirect('/proyecto/estadistica');
     });
 };
 
@@ -42,6 +42,6 @@ exports.deleteEstadistica = (req, res) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
-        res.redirect('/index/estadistica');
+        res.redirect('/proyecto/estadistica');
     });
 };

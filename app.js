@@ -13,10 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session({
   secret: 'secreto',
   resave: false,
-  saveUninitialized: false,
-  cookie:{
-        maxAge: 300000
-  }
+  saveUninitialized: false
 }));
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -25,13 +22,11 @@ const loginRoutes = require('./router/login');
 const router = require('./router/routes');
 
 app.use('/login', loginRoutes);
-app.use('/index', router);
+app.use('/proyecto', router);
 
 app.get('/', (req, res) => {
   res.redirect('/login');
 });
-
-
 
 app.listen(port, () => {
   console.log(`Servidor Node.js escuchando en http://localhost:${port}`);

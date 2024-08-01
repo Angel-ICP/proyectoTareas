@@ -18,7 +18,7 @@ exports.addProgramacion = (req, res) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
-        res.redirect('/index/programacion');
+        res.redirect('/proyecto/programacion');
     });
 };
 
@@ -31,7 +31,7 @@ exports.editProgramacion = (req, res) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
-        res.redirect('/index/programacion');
+        res.redirect('/proyecto/programacion');
     });
 };
 
@@ -42,6 +42,6 @@ exports.deleteProgramacion = (req, res) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
-        res.redirect('/index/programacion');
+        res.redirect('/proyecto/programacion');
     });
 };

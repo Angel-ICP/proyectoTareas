@@ -19,10 +19,10 @@ background-position: center center;
     <h1>Calculo</h1>
     <nav>
       <ul>
-        <li><a href="/index">Inicio</a></li>
+        <li><a href="/proyecto">Inicio</a></li>
         <!-- <li><a href="#">Sobre Nosotros</a></li>
         <li><a href="#">Servicios</a></li> -->
-        <li><a href="/index/logout">Cerra Sesion</a></li>
+        <li><a href="/proyecto/logout">Cerra Sesion</a></li>
       </ul>
     </nav>
   </header>
@@ -61,7 +61,7 @@ background-position: center center;
             <td>
               <button class="btn btn-warning btn-sm" data-toggle="modal"
                 data-target="#editCalculo<%= materiaCalculo.id %>">Editar</button>
-              <a href="/index/calculo/delete/<%= materiaCalculo.id %>"
+              <a href="/proyecto/calculo/delete/<%= materiaCalculo.id %>"
                 class="btn btn-danger btn-sm">Borrar</a>
             </td>
           </tr>
@@ -84,7 +84,7 @@ background-position: center center;
           </button>
         </div>
         <div class="modal-body">
-          <form action="/index/calculo/add" method="POST">
+          <form action="/proyecto/calculo/add" method="POST">
             <div class="form-group">
               <label for="nombre">Nombre del trabajo:</label>
               <input type="text" class="form-control" id="nombre" name="nombre" required>
@@ -146,7 +146,7 @@ background-position: center center;
           </button>
         </div>
         <div class="modal-body">
-          <form action="/index/calculo/edit/<%= materiaCalculo.id %>" method="POST">
+          <form action="/proyecto/calculo/edit/<%= materiaCalculo.id %>" method="POST">
             <div class="form-group">
               <label for="nombre">Nombre del trabajo:</label>
               <input type="text" class="form-control" id="nombre" value="<%= materiaCalculo.nombre %>" name="nombre" required>
