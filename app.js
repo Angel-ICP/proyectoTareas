@@ -13,7 +13,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session({
   secret: 'secreto',
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 300000
+  }
 }));
 
 app.use(express.static(path.join(__dirname, 'public')));

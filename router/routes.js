@@ -4,7 +4,7 @@ const estadistica = require('../controllers/estadisticaController.js');
 const calculo = require('../controllers/calculoController.js');
 const programacion = require('../controllers/progController.js');
 
-// Ruta para obtener todos los trabajos
+// Ruta para obtener todos los trabajos //Middleware para proteger las rutas //
 function isAuthenticated(req, res, next) {
   if (req.session.user) {
   return next();
@@ -19,16 +19,7 @@ router.get('/', isAuthenticated, (req, res) => {
     res.render('index', { title: 'Mi Proyecto Parcial 2', routes: router });
   });
 
-  // Ruta para logout
-router.get('/logout', (req, res) => {
-  req.session.destroy((err) => {
-    if (err) {
-      return res.redirect('/');
-    }
-    res.clearCookie('connect.sid');
-    res.redirect('/login');
-  });
-});
+
 
 
 /////////rutas de estadistica//////////////

@@ -2,71 +2,112 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Login</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+	<link rel="stylesheet" href="/css/login.css">
 </head>
 
 <body>
-    <div class="container mt-5">
-        <h1 class="text-center">Login</h1>
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <% if (typeof message !=='undefined' ) { %>
-                    <div class="alert alert-danger">
-                        <%= message %>
-                    </div>
-                    <% } %>
-                        <form action="/login" method="POST">
-                            <div class="form-group">
-                                <label for="username">Usuario:</label>
-                                <input type="text" class="form-control" id="username" name="username" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="password">Contraseña:</label>
-                                <input type="password" class="form-control" id="password" name="password" required>
-                            </div>
-                            
-                                <button type="submit" class="btn btn-primary btn-block">Login</button>
-                        
-                        
-                        </form>
-                        <button type="button" class="btn btn-secondary btn-block" data-toggle="modal" data-target="#createUserModal">Crear Usuario</button>
-            </div>
-        </div>
-    </div>
 
-    <!-- Modal for creating a new user -->
-    <div class="modal fade" id="createUserModal" tabindex="-1" role="dialog" aria-labelledby="createUserModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="createUserModalLabel">Crear Usuario</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="/login/add" method="POST">
-                        <div class="form-group">
-                            <label for="username">Usuario:</label>
-                            <input type="text" class="form-control" id="username" name="username" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Contraseña:</label>
-                            <input type="password" class="form-control" id="password" name="password" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block">Crear Usuario</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+	<h2>Login</h2>
+	<div class="container" id="container">
+		<div class="form-container sign-up-container">
+			<% if (typeof message !=='undefined' ) { %>
+				<div class="alert alert-danger">
+					<%= message %>
+				</div>
+				<% } %>
+					<form action="/login/add" method="POST">
+						<h1>Crear Cuenta</h1>
+						<div class="social-container">
+							<a href="https://www.facebook.com/Bestoldiemusic/videos/rick-astley-never-gonna-give-you-up/1575858219482722/"
+								class="social"><i class="fab fa-facebook-f"></i></a>
+							<a href="https://x.com/YofuiaEGB/status/1560191178150125576" class="social"><i
+									class="fa-brands fa-x-twitter"></i></a>
+							<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D"
+								class="social"><i class="fa-brands fa-youtube"></i></a>
+						</div>
+						<div class="form-group">
+							<input type="text" placeholder="Usuario" class="form-control" id="username" name="username"
+								required>
+						</div>
+						<div class="form-group">
+							<input type="password" placeholder="Contraseña" class="form-control" id="password"
+								name="password" required>
+						</div>
+						<button type="submit">Crear Usuario</button>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+					</form>
+		</div>
+
+
+
+
+
+		<div class="form-container sign-in-container">
+			<form action="/login" method="POST">
+				<h1>Ingresar</h1>
+				<div class="social-container">
+					<a href="https://www.facebook.com/Bestoldiemusic/videos/rick-astley-never-gonna-give-you-up/1575858219482722/"
+						class="social"><i class="fab fa-facebook-f"></i></a>
+					<a href="https://x.com/YofuiaEGB/status/1560191178150125576" class="social"><i
+							class="fa-brands fa-x-twitter"></i></i></a>
+					<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D"
+						class="social"><i class="fab fa-youtube"></i></a>
+				</div>
+				<div class="form-group">
+					<input type="text" id="username" placeholder="Usuario" name="username" required>
+				</div>
+				<div class="form-group">
+					<input type="password" id="password" placeholder="Contraseña" name="password" required>
+				</div>
+
+				<button type="submit">Login</button>
+
+			</form>
+		</div>
+
+
+
+
+
+		<div class="overlay-container">
+			<div class="overlay">
+				<div class="overlay-panel overlay-left">
+					<h1>¿Ya Estas Registrado?</h1>
+					<p>Ingresa Con Tu Usuario y Contraseña</p>
+					<button class="ghost" id="signIn">Inicia Sesion</button>
+				</div>
+				<div class="overlay-panel overlay-right">
+					<h1>Hola, ¿Eres Nuevo?</h1>
+					<p>Registrate Para Poder Ingresar</p>
+					<button class="ghost" id="signUp">Crear Cuenta</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		const signUpButton = document.getElementById('signUp');
+		const signInButton = document.getElementById('signIn');
+		const container = document.getElementById('container');
+
+		signUpButton.addEventListener('click', () => {
+			container.classList.add("right-panel-active");
+		});
+
+		signInButton.addEventListener('click', () => {
+			container.classList.remove("right-panel-active");
+		});
+	</script>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>
