@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+=<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -162,17 +162,17 @@ background-position: center center;
             <div class="form-group">
               <label for="estado" >Estado del trabajo:</label>
               <select id="estado" name="estado" required>
-                <option value="Pendiente" <%= materiaProg.estado = 'Pendiente' ? 'selected' : '' %>>Pendiente</option>
-                <option value="Entregado" <%= materiaProg.estado = 'Entregado' ? 'selected' : '' %>>Entregado</option>
-                <option value="No Entregado" <%= materiaProg.estado = 'No Entregado' ? 'selected' : '' %>>No Entregado</option>
+                <option value="Pendiente" <%= materiaProg.estado == 'Pendiente' ? 'selected' : '' %>>Pendiente</option>
+                <option value="Entregado" <%= materiaProg.estado == 'Entregado' ? 'selected' : '' %>>Entregado</option>
+                <option value="No Entregado" <%= materiaProg.estado == 'No Entregado' ? 'selected' : '' %>>No Entregado</option>
             </select>
             </div>
             <div class="form-group">
               <label for="parcial" >Estado del trabajo:</label>
               <select id="parcial" name="parcial" required>
-                <option value="1" <%= materiaProg.parcial = '1' ? 'selected' : '' %>>1</option>
-                <option value="2" <%= materiaProg.parcial = '2' ? 'selected' : '' %>>2</option>
-                <option value="3" <%= materiaProg.parcial = '3' ? 'selected' : '' %>>3</option>
+                <option value="1" <%= materiaProg.parcial == '1' ? 'selected' : '' %>>1</option>
+                <option value="2" <%= materiaProg.parcial == '2' ? 'selected' : '' %>>2</option>
+                <option value="3" <%= materiaProg.parcial == '3' ? 'selected' : '' %>>3</option>
             </select>
             </div>
             <div class="form-group">
