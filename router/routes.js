@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const estadistica = require('../controllers/estadisticaController.js');
-const calculo = require('../controllers/calculoController.js');
-const programacion = require('../controllers/progController.js');
+const tareas = require('../controllers/tareasController.js');
 
 // Ruta para obtener todos los trabajos //Middleware para proteger las rutas //
 function isAuthenticated(req, res, next) {
@@ -15,45 +13,27 @@ function isAuthenticated(req, res, next) {
  
 
 // Ruta Principal
-router.get('/', isAuthenticated, (req, res) => {
-    res.render('index', { title: 'Mi Proyecto Parcial 2', routes: router });
-  });
+// router.get('/', isAuthenticated, (req, res) => {
+//     res.render('index', { title: 'Mi Proyecto Parcial 2', routes: router });
+//   });
+
+router.get('/', isAuthenticated, tareas.getLastRegistros);
 
 
 
 
-/////////rutas de estadistica//////////////
+
+/////////rutas de tareas//////////////
 // Ruta para obtener todos los trabajos
-router.get('/estadistica', isAuthenticated, estadistica.getAllEstadistica);
+router.get('/tareas', isAuthenticated, tareas.getAllTareas);
 // Ruta para añadir un nuevo trabajo
-router.post('/estadistica/add', isAuthenticated, estadistica.addEstadistica);
+router.post('/tareas/add', isAuthenticated, tareas.addTareas);
 // Ruta para editar un trabajo existente
-router.post('/estadistica/edit/:id', isAuthenticated, estadistica.editEstadistica);
+router.post('/tareas/edit/:id', isAuthenticated, tareas.editTareas);
 // Ruta para borrar un trabajo
-router.get('/estadistica/delete/:id', isAuthenticated, estadistica.deleteEstadistica);
+router.get('/tareas/delete/:id', isAuthenticated, tareas.deleteTareas);
   
 
-/////////rutas de calculo//////////////
-// Ruta para obtener todos los trabajos
-router.get('/calculo', isAuthenticated, calculo.getAllCalculo);
-// Ruta para añadir un nuevo trabajo
-router.post('/calculo/add', isAuthenticated, calculo.addCalculo);
-// Ruta para editar un trabajo existente
-router.post('/calculo/edit/:id', isAuthenticated, calculo.editCalculo);
-// Ruta para borrar un trabajo
-router.get('/calculo/delete/:id', isAuthenticated, calculo.deleteCalculo);
-  
-
-
-/////////rutas de calculo//////////////
-// Ruta para obtener todos los trabajos
-router.get('/programacion', isAuthenticated, programacion.getAllProgramacion);
-// Ruta para añadir un nuevo trabajo
-router.post('/programacion/add', isAuthenticated, programacion.addProgramacion);
-// Ruta para editar un trabajo existente
-router.post('/programacion/edit/:id', isAuthenticated, programacion.editProgramacion);
-// Ruta para borrar un trabajo
-router.get('/programacion/delete/:id', isAuthenticated, programacion.deleteProgramacion);
   
 
 module.exports = router;

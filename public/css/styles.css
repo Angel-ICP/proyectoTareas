@@ -18,7 +18,7 @@ background {
 header {
     background-color: #000000b4;
     color: white;
-    padding: 1rem;
+    padding: 2rem;
     text-align: center;
 }
  
@@ -47,17 +47,17 @@ header nav ul li a {
 main  {
     justify-content: left;
     display: grid;
-    grid-template-columns: 4fr 1fr;
+    grid-template-columns: 4fr;
     gap: 1rem;
     padding: 1rem;
     flex: 1;
     max-width: 1500px;
-    margin: 0 auto;
+    margin: 0 10%;
 }
 .estadistica {
     justify-content: left;
     display: grid;
-    grid-template-columns: 4fr;
+    grid-template-columns: 1f;
     gap: 1rem;
     padding: 1rem;
     flex: 1;
@@ -82,11 +82,6 @@ main  {
     background-color: rgba(167, 58, 80, 0.89);
 }
 
-aside {
-    height: 80%;
-    background-color: #f4f4f4;
-    padding: 1rem;
-}
 
 footer {
     background-color: #333;
@@ -95,3 +90,8 @@ footer {
     padding: 1rem;
 }
 
+
+
+.table{
+    background-color: #333333a8;
+}

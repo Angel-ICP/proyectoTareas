@@ -6,67 +6,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrador de trabajos</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 
-<body   style="
+<body   
+style="
 background-image: url(https://wallpapers-clan.com/wp-content/uploads/2024/02/aesthetic-minecraft-landscape-desktop-wallpaper-preview.jpg);
-background-size: cover;
-background-repeat: no-repeat;
-background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;"
+>
 
-">
+<%- include('sidebar') %>
+
     <header >
         <h1>Tus tareas</h1>
-        <nav>
-            <ul>
-                <li><a href="/proyecto">Inicio</a></li>
-                <!-- <li><a href="#">Sobre Nosotros</a></li>
-                <li><a href="#">Servicios</a></li> -->
-                <li><a href="/login/logout">Cerra Sesion</a></li>
-            </ul>
-        </nav>
+        
     </header>
 
     <main >
         <div class="container mt-5">
-            <h2 style="color: rgb(255, 255, 255);font-weight: bold;">Materias</h2>
-            <div>
-                <div class="materias" >
-
-                    <div>
-                        <a href="/proyecto/estadistica">
-                            <img class="mat_img"
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYxyhpqE03v_YpDGFQN3R0cb0mcB87NSpbvg&s"
-                                alt="">
-                            <h4 style="color: rgb(255, 255, 255); font-weight: bold;">Estadistica</h4>
-                        </a>
-                    </div>
-
-                    <div>
-
-                        <a href="/proyecto/calculo">
-                            <img class="mat_img" src="https://www.unamenlinea.unam.mx/recursos/img/81817/calculo.jpg"
-                                alt="">
-                            <h4 style="color: rgb(255, 255, 255);font-weight: bold; ">Calculo</h4>
-                        </a>
-
-                    </div>
-                    <div>
-                        <a href="/proyecto/programacion">
-                            <img class="mat_img" src="https://loopgk.com/wp-content/uploads/2021/02/lenguaje-min.jpg"
-                            alt="">
-                        <h4 style="color: rgb(255, 255, 255);font-weight: bold;">Programacion</h4>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            <h2 style="color: rgb(255, 255, 255);font-weight: bold;">Trabajos Recientes</h2>
+            
         </div>
-        <aside class="container mt-5">
-            <h3>Noticias Recientes</h3>
-            <p>Últimas actualizaciones y noticias.</p>
-        </aside>
+
+        <table  class=" texto table">
+            <thead class="thead-dark">
+              <tr>
+                <td>ID</td>
+                <td>Asignatura</td>
+                <td>Trabajo</td>
+                <td>Fecha de Inicio</td>
+                <td>Fecha de Entrega</td>
+                <td>Estado</td>
+                <td>Parcial</td>
+                <td>Calificacion</td>
+                <td>Valor del Trabajo</td>
+              </tr>
+            </thead>
+            <tbody>
+                <% registros.forEach(tarea=> { %>
+                  <tr>
+                    <td> <%= tarea.id %> </td>
+                    <td> <%= tarea.materia %> </td>
+                    <td> <%= tarea.nombre %> </td>
+                    <td> <%= tarea.fecha %> </td>
+                    <td> <%= tarea.fecha_termina %> </td>
+                    <td> <%= tarea.estado %> </td>
+                    <td> <%= tarea.parcial %> </td>
+                    <td> <%= tarea.calificacion %> </td>
+                    <td> <%= tarea.valor_cal %> </td>
+                    
+                  </tr>
+        
+        
+                  <% }) %>
+              </tbody>
+          </table>
+      
     </main>
 
     <footer>
