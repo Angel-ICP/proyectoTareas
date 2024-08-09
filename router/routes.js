@@ -19,13 +19,15 @@ function isAuthenticated(req, res, next) {
 
 router.get('/', isAuthenticated, tareas.getLastRegistros);
 
+// router.get('/', isAuthenticated, tareas.getCalculo, tareas.getEstadistica, tareas.getProgramacion);
+
 
 
 
 
 /////////rutas de tareas//////////////
 // Ruta para obtener todos los trabajos
-router.get('/tareas', isAuthenticated, tareas.getAllTareas);
+router.get('/tareas', isAuthenticated, tareas.getAllTareas, tareas.getCalculo, tareas.getEstadistica, tareas.getProgramacion);
 // Ruta para añadir un nuevo trabajo
 router.post('/tareas/add', isAuthenticated, tareas.addTareas);
 // Ruta para editar un trabajo existente

@@ -1,0 +1,97 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+background {
+    background-image: url("https://w.wallhaven.cc/full/yx/wallhaven-yxl66g.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    filter: brightness(80%);
+}
+
+header {
+    background-color: #000000b4;
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+ 
+.texto{
+    color: rgb(255, 255, 255);
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+header nav ul li {
+    margin: 0 1rem;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+main  {
+    justify-content: left;
+    display: grid;
+    grid-template-columns: 4fr;
+    gap: 1rem;
+    padding: 1rem;
+    flex: 1;
+    max-width: 1500px;
+    margin: 0 10%;
+}
+.estadistica {
+    justify-content: left;
+    display: grid;
+    grid-template-columns: 1f;
+    gap: 1rem;
+    padding: 1rem;
+    flex: 1;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+.materias{
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr;
+    padding: 1;
+    margin: 0 auto 0 0;
+}
+
+.mat_img{
+    border-radius: 10%;
+    width: 300px;
+    height: 320px;
+}
+
+.modal1{
+    background-color: rgba(167, 58, 80, 0.89);
+}
+
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+
+
+.table{
+    background-color: #333333a8;
+}
