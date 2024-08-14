@@ -27,7 +27,7 @@ router.get('/', isAuthenticated, tareas.getLastRegistros);
 
 /////////rutas de tareas//////////////
 // Ruta para obtener todos los trabajos
-router.get('/tareas', isAuthenticated, tareas.getAllTareas, tareas.getCalculo, tareas.getEstadistica, tareas.getProgramacion);
+router.get('/tareas', isAuthenticated, tareas.getAllTareas);
 // Ruta para añadir un nuevo trabajo
 router.post('/tareas/add', isAuthenticated, tareas.addTareas);
 // Ruta para editar un trabajo existente

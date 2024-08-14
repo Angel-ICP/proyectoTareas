@@ -17,6 +17,10 @@ router.get('/logout', (req, res) => {
     });
 });
 
+
+router.get('/usuarios', loginController.showUserProfile);
+
+
 // router.get('/login2', (req, res) => {
 //     res.render('login2', { title: 'Mi Proyecto Parcial 2', routes: router });
 //   });

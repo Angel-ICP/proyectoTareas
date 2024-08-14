@@ -28,7 +28,7 @@ style="background-color: white;"
 
     <main >
         <div class="container mt-5">
-            <h2 style="color: rgb(255, 255, 255);font-weight: bold;">Trabajos Recientes</h2>
+            <h2 style="color: rgb(0, 0, 0);font-weight: bold;">Trabajos Recientes</h2>
             
         </div>
 
@@ -54,7 +54,10 @@ style="background-color: white;"
                     <td> <%= tarea.nombre %> </td>
                     <td> <%= tarea.fecha %> </td>
                     <td> <%= tarea.fecha_termina %> </td>
-                    <td> <%= tarea.estado %> </td>
+                    <td class="<%= tarea.estado === 'Pendiente' ? 'estado-pendiente' 
+                                  : tarea.estado === 'Entregado' ? 'estado-en-progreso' 
+                                  : tarea.estado === 'No Entregado' ? 'estado-completado' : '' %>">
+                        <%= tarea.estado %> </td>
                     <td> <%= tarea.parcial %> </td>
                     <td> <%= tarea.calificacion %> </td>
                     <td> <%= tarea.valor_cal %> </td>

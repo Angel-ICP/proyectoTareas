@@ -88,81 +88,155 @@
             </div>
         </div>
 
-        <div class="box hide" data-content="1">
+        <div s class="box hide" data-content="1">
             
             <div>
-                <h3>Lorem ipsum dolor</h3>
+                <h3>Trabajos de Calculo</h3>
                 <p>
-                    <thead class="thead-dark">
+                  <table style="width: 100%;" class=" texto table">
+                  <thead class="thead-dark">
+                    <tr>
+                      <td>ID</td>
+                      <td>Asignatura</td>
+                      <td>Trabajo</td>
+                      <td>Fecha de Inicio</td>
+                      <td>Fecha de Entrega</td>
+                      <td>Estado</td>
+                      <td>Parcial</td>
+                      <td>Calificacion</td>
+                      <td>Valor del Trabajo</td>
+                      <td>Acciones</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <% calculo.forEach(tarea=> { %>
                         <tr>
-                          <td>ID</td>
-                          <td>Asignatura</td>
-                          <td>Trabajo</td>
-                          <td>Fecha de Inicio</td>
-                          <td>Fecha de Entrega</td>
-                          <td>Estado</td>
-                          <td>Parcial</td>
-                          <td>Calificacion</td>
-                          <td>Valor del Trabajo</td>
+                          <td> <%= tarea.id %> </td>
+                          <td> <%= tarea.materia %> </td>
+                          <td> <%= tarea.nombre %> </td>
+                          <td> <%= tarea.fecha %> </td>
+                          <td> <%= tarea.fecha_termina %> </td>
+                          <td class="<%= tarea.estado === 'Pendiente' ? 'estado-pendiente' 
+                                  : tarea.estado === 'Entregado' ? 'estado-en-progreso' 
+                                  : tarea.estado === 'No Entregado' ? 'estado-completado' : '' %>">
+                        <%= tarea.estado %> </td>
+                          <td> <%= tarea.parcial %> </td>
+                          <td> <%= tarea.calificacion %> </td>
+                          <td> <%= tarea.valor_cal %> </td>
+                          <td>
+                            <button class="btn btn-primary btn-sm" data-toggle="modal"
+                              data-target="#editCalculo<%= tarea.id %>">Editar</button>
+                            <a href="/proyecto/tareas/delete/<%= tarea.id %>"
+                              class="btn btn-danger btn-sm">Borrar</a>
+                          </td>
                         </tr>
-                      </thead>
-                      <tbody>
-                          <% calculo.forEach(calculoa=> { %>
-                            <tr>
-                              <td> <%= calculoa.id %> </td>
-                              <td> <%= calculoa.materia %> </td>
-                              <td> <%= calculoa.nombre %> </td>
-                              <td> <%= calculoa.fecha %> </td>
-                              <td> <%= calculoa.fecha_termina %> </td>
-                              <td> <%= calculoa.estado %> </td>
-                              <td> <%= calculoa.parcial %> </td>
-                              <td> <%= calculoa.calificacion %> </td>
-                              <td> <%= calculoa.valor_cal %> </td>
-                              
-                            </tr>
-                  
-                  
-                            <% }) %>
-                        </tbody>
-                    </table>
+              
+              
+                        <% }) %>
+                    </tbody>
+                </table>
                 </p>
             </div>
         </div>
 
         <div class="box hide" data-content="2">
-            <img src="https://images.pexels.com/photos/3761308/pexels-photo-3761308.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="">
-            <div>
-                <h3>Lorem ipsum dolor</h3>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos accusantium itaque amet ducimus, magni
-                    iure
-                    a repudiandae molestias nemo voluptatibus voluptas earum excepturi architecto, iusto necessitatibus
-                    sequi perferendis veritatis! Voluptatem?
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos accusantium itaque amet ducimus, magni
-                    iure
-                    a repudiandae molestias nemo voluptatibus voluptas earum excepturi architecto, iusto necessitatibus
-                    sequi perferendis veritatis! Voluptatem?
-                </p>
-            </div>
+          <div>
+            <h3>Trabajos de Estadistica</h3>
+            <p>
+              <table style="width: 100%;" class=" texto table">
+              <thead class="thead-dark">
+                <tr>
+                  <td>ID</td>
+                  <td>Asignatura</td>
+                  <td>Trabajo</td>
+                  <td>Fecha de Inicio</td>
+                  <td>Fecha de Entrega</td>
+                  <td>Estado</td>
+                  <td>Parcial</td>
+                  <td>Calificacion</td>
+                  <td>Valor del Trabajo</td>
+                  <td>Acciones</td>
+                </tr>
+              </thead>
+              <tbody>
+                  <% estadistica.forEach(tarea=> { %>
+                    <tr>
+                      <td> <%= tarea.id %> </td>
+                      <td> <%= tarea.materia %> </td>
+                      <td> <%= tarea.nombre %> </td>
+                      <td> <%= tarea.fecha %> </td>
+                      <td> <%= tarea.fecha_termina %> </td>
+                      <td class="<%= tarea.estado === 'Pendiente' ? 'estado-pendiente' 
+                                  : tarea.estado === 'Entregado' ? 'estado-en-progreso' 
+                                  : tarea.estado === 'No Entregado' ? 'estado-completado' : '' %>">
+                        <%= tarea.estado %> </td>
+                      <td> <%= tarea.parcial %> </td>
+                      <td> <%= tarea.calificacion %> </td>
+                      <td> <%= tarea.valor_cal %> </td>
+                      <td>
+                        <button class="btn btn-primary btn-sm" data-toggle="modal"
+                          data-target="#editCalculo<%= tarea.id %>">Editar</button>
+                        <a href="/proyecto/tareas/delete/<%= tarea.id %>"
+                          class="btn btn-danger btn-sm">Borrar</a>
+                      </td>
+                    </tr>
+          
+          
+                    <% }) %>
+                </tbody>
+            </table>
+            </p>
+        </div>
         </div>
 
         <div class="box hide" data-content="3">
-            <img src="https://images.pexels.com/photos/5336951/pexels-photo-5336951.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="">
-            <div>
-                <h3>Lorem ipsum dolor</h3>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos accusantium itaque amet ducimus, magni
-                    iure
-                    a repudiandae molestias nemo voluptatibus voluptas earum excepturi architecto, iusto necessitatibus
-                    sequi perferendis veritatis! Voluptatem?
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos accusantium itaque amet ducimus, magni
-                    iure
-                    a repudiandae molestias nemo voluptatibus voluptas earum excepturi architecto, iusto necessitatibus
-                    sequi perferendis veritatis! Voluptatem?
-                </p>
-            </div>
+          <div>
+            <h3>Trabajos de Programacion</h3>
+            <p>
+              <table style="width: 100%;" class=" texto table">
+              <thead class="thead-dark">
+                <tr>
+                  <td>ID</td>
+                  <td>Asignatura</td>
+                  <td>Trabajo</td>
+                  <td>Fecha de Inicio</td>
+                  <td>Fecha de Entrega</td>
+                  <td>Estado</td>
+                  <td>Parcial</td>
+                  <td>Calificacion</td>
+                  <td>Valor del Trabajo</td>
+                  <td>Acciones</td>
+                </tr>
+              </thead>
+              <tbody>
+                  <% programacion.forEach(tarea=> { %>
+                    <tr>
+                      <td> <%= tarea.id %> </td>
+                      <td> <%= tarea.materia %> </td>
+                      <td> <%= tarea.nombre %> </td>
+                      <td> <%= tarea.fecha %> </td>
+                      <td> <%= tarea.fecha_termina %> </td>
+                      <td class="<%= tarea.estado == 'Pendiente' ? 'estado-pendiente' 
+                                  : tarea.estado == 'Entregado' ? 'estado-en-progreso' 
+                                  : tarea.estado == 'No Entregado' ? 'estado-completado' : '' %>">
+                        <%= tarea.estado %> </td>
+                      <td> <%= tarea.parcial %> </td>
+                      <td> <%= tarea.calificacion %> </td>
+                      <td> <%= tarea.valor_cal %> </td>
+                      <td>
+                        <button class="btn btn-primary btn-sm" data-toggle="modal"
+                          data-target="#editCalculo<%= tarea.id %>">Editar</button>
+                        <a href="/proyecto/tareas/delete/<%= tarea.id %>"
+                          class="btn btn-danger btn-sm">Borrar</a>
+                      </td>
+                    </tr>
+          
+          
+                    <% }) %>
+                </tbody>
+            </table>
+            </p>
+        </div>
         </div>
 
     </div>
@@ -189,77 +263,85 @@
     </script>
     <% tareas.forEach(tarea=> { %>
 
-        <div class="modal fade" id="editCalculo<%= tarea.id %>" tabindex="-1" role="dialog"
-          aria-labelledby="editCalculoLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div style="background-color: rgba(131, 131, 170, 0.849);" class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="editCalculoLabel">Editar Proveedor</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <form action="/proyecto/tareas/edit/<%= tarea.id %>" method="POST">
-                  <div class="form-group">
-                    <label for="materia" >Asignatura:</label>
-                    <select id="materia" name="materia" required>
-                      <option value="Calculo" <%= tarea.parcial == 'Calculo' ? 'selected' : '' %>>Calculo</option>
-                      <option value="Estadistica" <%= tarea.parcial == 'Estadistica' ? 'selected' : '' %>>Estadistica</option>
-                      <option value="Programacion" <%= tarea.parcial == 'Programacion' ? 'selected' : '' %>>Programacion</option>
-                  </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="nombre">Nombre del trabajo:</label>
-                    <input type="text" class="form-control" id="nombre" value="<%= tarea.nombre %>" name="nombre" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="fecha">Fecha de Inicio:</label>
-                    <input type="date" class="form-control" id="fecha" value="<%= tarea.fecha %>" name="fecha" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="fecha_termina">Fecha de Entrega:</label>
-                    <input type="date" class="form-control" id="fecha_termina" value="<%= tarea.fecha_termina %>" name="fecha_termina" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="estado" >Estado del trabajo:</label>
-                    <select id="estado" name="estado" required>
-                      <option value="Pendiente" <%= tarea.estado == 'Pendiente' ? 'selected' : '' %>>Pendiente</option>
-                      <option value="Entregado" <%= tarea.estado == 'Entregado' ? 'selected' : '' %>>Entregado</option>
-                      <option value="No Entregado" <%= tarea.estado == 'No Entregado' ? 'selected' : '' %>>No Entregado</option>
-                  </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="parcial" >Parcial:</label>
-                    <select id="parcial" name="parcial" required>
-                      <option value="1" <%= tarea.parcial == '1' ? 'selected' : '' %>>1</option>
-                      <option value="2" <%= tarea.parcial == '2' ? 'selected' : '' %>>2</option>
-                      <option value="3" <%= tarea.parcial == '3' ? 'selected' : '' %>>3</option>
-                  </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="calificacion">Calificacion:</label>
-                    <input type="number" class="form-control" id="calificacion" value="<%= tarea.calificacion %>" name="calificacion">
-                  </div>
-                  <div class="form-group">
-                    <label for="valor_cal">Calificacion:</label>
-                    <input type="number" class="form-control" id="valor_cal" value="<%= tarea.valor_cal %>" name="valor_cal">
-                  </div>
-      
-                  <button type="submit" class="btn btn-primary">Editar</button>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-              </div>
+      <div class="modal fade" id="editCalculo<%= tarea.id %>" tabindex="-1" role="dialog"
+        aria-labelledby="editCalculoLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div style="background-color: rgba(131, 131, 170, 0.849); width: 540px;" class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editCalculoLabel">Editar Trabajo</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="/proyecto/tareas/edit/<%= tarea.id %>" method="POST">
+                <div class="form-group">
+                  <label for="materia" >Estado del trabajo:</label>
+                  <select id="materia" name="materia" required>
+                    <option value="Calculo" <%= tarea.materia == 'Calculo' ? 'selected' : '' %>>Calculo</option>
+                    <option value="Estadistica" <%= tarea.materia == 'Estadistica' ? 'selected' : '' %>>Estadistica</option>
+                    <option value="Programacion" <%= tarea.materia == 'Programacion' ? 'selected' : '' %>>Programacion</option>
+                </select>
+                </div>
+                <div class="form-group">
+                  <label for="nombre">Nombre del trabajo:</label>
+                  <input type="text" class="form-control" id="nombre" value="<%= tarea.nombre %>" name="nombre" required>
+                </div>
+                <div class="form-group">
+                  <label for="fecha">Fecha de Inicio:</label>
+                  <input type="date" class="form-control" id="fecha" value="<%= tarea.fecha %>" name="fecha" required>
+                </div>
+                <div class="form-group">
+                  <label for="fecha_termina">Fecha de Entrega:</label>
+                  <input type="date" class="form-control" id="fecha_termina" value="<%= tarea.fecha_termina %>" name="fecha_termina" required>
+                </div>
+                <div class="form-group">
+                  <label for="estado" >Estado del trabajo:</label>
+                  <select id="estado" name="estado" required>
+                    <option value="Pendiente" <%= tarea.estado == 'Pendiente' ? 'selected' : '' %>>Pendiente</option>
+                    <option value="Entregado" <%= tarea.estado == 'Entregado' ? 'selected' : '' %>>Entregado</option>
+                    <option value="No Entregado" <%= tarea.estado == 'No Entregado' ? 'selected' : '' %>>No Entregado</option>
+                </select>
+                </div>
+                <div class="form-group">
+                  <label for="parcial" >Parcial:</label>
+                  <select id="parcial" name="parcial" required>
+                    <option value="1" <%= tarea.parcial == '1' ? 'selected' : '' %>>1</option>
+                    <option value="2" <%= tarea.parcial == '2' ? 'selected' : '' %>>2</option>
+                    <option value="3" <%= tarea.parcial == '3' ? 'selected' : '' %>>3</option>
+                </select>
+                </div>
+                <div class="form-group">
+                  <label for="calificacion">Calificacion:</label>
+                  <input type="number" class="form-control" id="calificacion" value="<%= tarea.calificacion %>" name="calificacion">
+                </div>
+                <div class="form-group">
+                  <label for="valor_cal">Calificacion:</label>
+                  <input type="number" class="form-control" id="valor_cal" value="<%= tarea.valor_cal %>" name="valor_cal">
+                </div>
+    
+                <button type="submit" class="btn btn-primary">Editar</button>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
             </div>
           </div>
         </div>
-        <% }) %>
+      </div>
+      <% }) %>
+
+
+        <!-- MOdal para modificar Trabajos  -->
+      
 
 <footer>
     <p>&copy; 2024 Mi Sitio Web. Todos los derechos reservados.</p>
   </footer>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>

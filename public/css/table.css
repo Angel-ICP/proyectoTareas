@@ -118,13 +118,11 @@ ul {
     margin-bottom: 20px;
 }
 
-.box p {
-    color: #c4cfde;
-    opacity: .5;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1rem;
-    
-}
+.box table {
+    width: 100%; /* Make the table occupy the box width */
+    table-layout: fixed; /* Enable fixed column widths */
+    border-collapse: collapse;
+  }
 
 .show {
     display: flex;

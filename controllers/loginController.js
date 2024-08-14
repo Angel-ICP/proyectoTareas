@@ -28,45 +28,58 @@ exports.loginUser = (req, res) => {
 };
 
 
+exports.showUserProfile = (req, res) => {
+  // Obtén el usuario de la sesión
+  const user = req.session.user;
 
-// Configura multer para manejar la carga de archivos
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'public/img/');
-  },
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname));
+  if (!user) {
+    return res.redirect('/login'); // Redirige al login si el usuario no está autenticado
   }
-});
+  if (user.files) {
+    user.files = `data:image/jpg;base64,${user.files.toString('base64')}`;
+  }
+
+  // Renderiza la vista del perfil de usuario
+  res.render('usuarios', { usuario: user });
+};
+
+
+
+const storage = multer.memoryStorage(); // Usamos memoria para almacenar archivos en buffer
 const upload = multer({ storage: storage });
 
 exports.createUser = (req, res) => {
-  upload.single('photo')(req, res, (err) => {
+  // El middleware `upload.single('file')` se encarga de manejar el archivo subido
+  upload.single('file')(req, res, (err) => {
     if (err) {
-      return res.status(500).json({ error: 'Error al cargar la imagen' });
+      return res.status(500).json({ message: 'Error al subir el archivo' });
     }
 
     const { name, middleName, lastName, carrera, email, phone, username, password } = req.body;
-    const photo = req.file ? req.file.filename : null; // Si hay un archivo cargado, usa su nombre de archivo
+    const file = req.file ? req.file.buffer : null; // Usamos el buffer del archivo
+
+    if (!username || !password) {
+      res.render('login', { message: 'Username y password son requeridos' });
+      return;
+    }
 
     bcrypt.hash(password, 10, (err, hashedPassword) => {
-      if (err) {
-        return res.status(500).json({ error: 'Error al encriptar la contraseña' });
-      }
+      if (err) throw err;
 
-      const newUser = { name, middleName, lastName, carrera, email, phone, username, password: hashedPassword, photo };
-
+      const newUser = { name, middleName, lastName, carrera, email, phone, username, password: hashedPassword, files: file };
+      
       db.query('INSERT INTO usuarios SET ?', newUser, (err, results) => {
-        if (err) {
-          return res.status(500).json({ error: err.message });
-        }
+        if (err) throw err;
         res.redirect('/login');
       });
     });
   });
 };
+
+
+
 // exports.createUser = (req, res) => {
-//   const { username, password } = req.body;
+//   const {  name, middleName, lastName, carrera, email, phone, username, password, file } = req.body;
 //   console.log('username:', username); 
 //   console.log('password:', password); 
 
@@ -76,10 +89,12 @@ exports.createUser = (req, res) => {
 //   }
 
 //   bcrypt.hash(password, 10, (err, hashedPassword) => {
+//     const newUser = { name, middleName, lastName, carrera, email, phone, username, password: hashedPassword, file }
 //     if (err) throw err;
-//     db.query('INSERT INTO usuarios SET ?', { username, password: hashedPassword }, (err, results) => {
+//     db.query('INSERT INTO usuarios SET ?', newUser, (err, results) => {
 //       if (err) throw err;
 //       res.redirect('/login');
 //     });
 //   });
 // };
+

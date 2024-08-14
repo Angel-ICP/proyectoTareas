@@ -1,14 +1,45 @@
 const db = require('../db');
 
 // Obtener todos los trabajos
+// exports.getAllTareas = (req, res) => {
+//     db.query('SELECT * FROM tareas', (err, results) => {
+//         if (err) {
+//             return res.status(500).json({ error: err.message });
+//         }
+//         res.render('tareas', { tareas: results });
+//     });
+// };
+
 exports.getAllTareas = (req, res) => {
     db.query('SELECT * FROM tareas', (err, results) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
-        res.render('tareas', { tareas: results });
+        db.query('SELECT * FROM tareas WHERE materia = "Estadistica"', (err, estadistica) => {
+            if (err) {
+                return res.status(500).json({ error: err.message });
+            }
+            db.query('SELECT * FROM tareas WHERE materia = "Calculo"', (err, calculo) => {
+                if (err) {
+                    return res.status(500).json({ error: err.message });
+                }
+                db.query('SELECT * FROM tareas WHERE materia = "Programacion"', (err, programacion) => {
+                    if (err) {
+                        return res.status(500).json({ error: err.message });
+                    }
+                    res.render('tareas', { 
+                        tareas: results, 
+                        estadistica: estadistica, 
+                        calculo: calculo, 
+                        programacion: programacion 
+                    });
+                });
+            });
+        });
     });
 };
+
+
 
 // Añadir un trabajo nuevo
 exports.addTareas = (req, res) => {
@@ -55,29 +86,3 @@ exports.getLastRegistros = (req, res) => {
         res.render('index', { registros: results }); 
     });
 };
-
-exports.getCalculo = (req, res) => {
-    db.query('SELECT * FROM tareas WHERE materia = "Calculo"', (err, results) => {
-        if (err) {
-            return res.status(500).json({ error: err.message });
-        }
-        res.render('tareas', { calculo: results }); 
-    });
-};
-exports.getEstadistica = (req, res) => {
-    db.query('SELECT * FROM tareas WHERE materia = "Estadistica"', (err, results) => {
-        if (err) {
-            return res.status(500).json({ error: err.message });
-        }
-        res.render('tareas', { estadistica: results }); 
-    });
-};
-exports.getProgramacion = (req, res) => {
-    db.query('SELECT * FROM tareas WHERE materia = "Programacion"', (err, results) => {
-        if (err) {
-            return res.status(500).json({ error: err.message });
-        }
-        res.render('tareas', { programacion: results }); 
-    });
-};
-
