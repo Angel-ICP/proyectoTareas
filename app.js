@@ -3,6 +3,7 @@ const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const path = require('path'); 
+const multer = require('multer')
 
 const app = express();
 const port = 3000;
@@ -19,7 +20,7 @@ app.use(session({
 }));
 
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 
 
@@ -35,4 +36,13 @@ app.get('/', (req, res) => {
 
 app.listen(port, () => {
   console.log(`Servidor Node.js escuchando en http://localhost:${port}`);
+});
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/'); // Carpeta para almacenar archivos
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname)); // Nombre único del archivo
+  }
 });

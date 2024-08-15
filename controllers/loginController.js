@@ -2,6 +2,7 @@ const db = require('../db');
 const bcrypt = require('bcryptjs');
 const multer = require('multer');
 
+
 exports.showLogin = (req, res) => {
   res.render('login');
 };
@@ -17,6 +18,7 @@ exports.loginUser = (req, res) => {
         if (match) {
           req.session.user = user;
           res.redirect('/proyecto');
+          console.log('Usuario:', user); // Verifica el contenido del objeto usu
         } else {
           res.render('login', { message: 'Usuario o contraseña incorrectos' });
         }
@@ -25,57 +27,49 @@ exports.loginUser = (req, res) => {
       res.render('login', { message: 'Usuario o contraseña incorrectos' });
     }
   });
+
 };
 
 
 exports.showUserProfile = (req, res) => {
-  // Obtén el usuario de la sesión
   const user = req.session.user;
 
   if (!user) {
-    return res.redirect('/login'); // Redirige al login si el usuario no está autenticado
+    return res.redirect('/login');
   }
-  if (user.files) {
-    user.files = `data:image/jpg;base64,${user.files.toString('base64')}`;
+  if (Buffer.isBuffer(user.files)) {
+    user.files = user.files.toString('utf8');
   }
 
-  // Renderiza la vista del perfil de usuario
+
   res.render('usuarios', { usuario: user });
 };
 
 
 
-const storage = multer.memoryStorage(); // Usamos memoria para almacenar archivos en buffer
-const upload = multer({ storage: storage });
+
+
 
 exports.createUser = (req, res) => {
-  // El middleware `upload.single('file')` se encarga de manejar el archivo subido
-  upload.single('file')(req, res, (err) => {
-    if (err) {
-      return res.status(500).json({ message: 'Error al subir el archivo' });
-    }
+  const { name, middleName, lastName, carrera, email, phone, username, password } = req.body;
+  const files = req.file ? req.file.filename : null; // Guarda el nombre del archivo como cadena
 
-    const { name, middleName, lastName, carrera, email, phone, username, password } = req.body;
-    const file = req.file ? req.file.buffer : null; // Usamos el buffer del archivo
+  if (!username || !password) {
+    res.render('login', { message: 'Username y password son requeridos' });
+    return;
+  }
 
-    if (!username || !password) {
-      res.render('login', { message: 'Username y password son requeridos' });
-      return;
-    }
+  bcrypt.hash(password, 10, (err, hashedPassword) => {
+    if (err) throw err;
 
-    bcrypt.hash(password, 10, (err, hashedPassword) => {
+    const newUser = { name, middleName, lastName, carrera, email, phone, username, password: hashedPassword, files };
+    
+    db.query('INSERT INTO usuarios SET ?', newUser, (err, results) => {
       if (err) throw err;
-
-      const newUser = { name, middleName, lastName, carrera, email, phone, username, password: hashedPassword, files: file };
-      
-      db.query('INSERT INTO usuarios SET ?', newUser, (err, results) => {
-        if (err) throw err;
-        res.redirect('/login');
-      });
+      res.redirect('/login');
     });
   });
 };
-
 
 
 // exports.createUser = (req, res) => {

@@ -127,10 +127,10 @@ button:hover {
 
 .estado-en-progreso {
     background-color: rgb(0, 255, 85);
-    color: white;
+    color: black;
 }
 
 .estado-completado {
     background-color: rgb(230, 35, 35);
-    color: white;
+    color: black;
 }

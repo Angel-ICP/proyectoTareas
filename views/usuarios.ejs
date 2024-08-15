@@ -19,7 +19,7 @@
         <div class="bg-background rounded-lg shadow-lg overflow-hidden">
           <div class="h-48 bg-[#00b894] relative">
             <img
-              src=""
+              src="https://1000marcas.net/wp-content/uploads/2022/01/UNID-Logo.png"
               alt="Profile Banner"
               width="192"
               height="192"
@@ -28,8 +28,10 @@
             />
             <div class="absolute bottom-0 left-0 right-0 flex items-center justify-center -mb-12">
               <span class="relative flex shrink-0 overflow-hidden rounded-full w-24 h-24 ring-4 ring-background">
-                <img class="aspect-square h-full w-full" alt="<%= usuario.username %>" src="<%= usuario.files %>" />  <!-- Aquí usa la URL de la imagen del perfil -->
+                <img class="aspect-square h-full w-full" alt="" src="/uploads/<%= usuario.files %>" />  <!-- Aquí usa la URL de la imagen del perfil -->
               </span>
+
+        
             </div>
           </div>
           <div class="pt-16 px-6 pb-6 grid gap-6">

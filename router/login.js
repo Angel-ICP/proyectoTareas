@@ -1,9 +1,15 @@
 const express = require('express');
 const router = express.Router();
+const multer = require('multer')
+
+const path = require('path');
 const loginController = require('../controllers/loginController');
 
+
+const upload = multer({ dest: 'uploads/' });
+
 router.get('/', loginController.showLogin);
-router.post('/add', loginController.createUser);
+router.post('/add', upload.single('file'), loginController.createUser);
 router.post('/', loginController.loginUser);
 
 // Ruta para logout
@@ -16,6 +22,7 @@ router.get('/logout', (req, res) => {
         res.redirect('/login');
     });
 });
+
 
 
 router.get('/usuarios', loginController.showUserProfile);

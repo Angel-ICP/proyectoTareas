@@ -11,6 +11,7 @@ function isAuthenticated(req, res, next) {
   }
  }
  
+ 
 
 // Ruta Principal
 // router.get('/', isAuthenticated, (req, res) => {
