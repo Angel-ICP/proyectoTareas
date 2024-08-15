@@ -116,9 +116,9 @@
                           <td> <%= tarea.nombre %> </td>
                           <td> <%= tarea.fecha %> </td>
                           <td> <%= tarea.fecha_termina %> </td>
-                          <td class="<%= tarea.estado === 'pendiente' ? 'estado-pendiente' 
-                                  : tarea.estado === 'entregado' ? 'estado-en-progreso' 
-                                  : tarea.estado === 'no entregado' ? 'estado-completado' : '' %>">
+                          <td class="<%= tarea.estado == 'Pendiente' ? 'estado-pendiente' 
+                                  : tarea.estado == 'Entregado' ? 'estado-en-progreso' 
+                                  : tarea.estado == 'No Entregado' ? 'estado-completado' : '' %>">
                         <%= tarea.estado %> </td>
                           <td> <%= tarea.parcial %> </td>
                           <td> <%= tarea.calificacion %> </td>
@@ -166,9 +166,9 @@
                       <td> <%= tarea.nombre %> </td>
                       <td> <%= tarea.fecha %> </td>
                       <td> <%= tarea.fecha_termina %> </td>
-                      <td class="<%= tarea.estado === 'pendiente' ? 'estado-pendiente' 
-                                  : tarea.estado === 'entregado' ? 'estado-en-progreso' 
-                                  : tarea.estado === 'no entregado' ? 'estado-completado' : '' %>">
+                      <td class="<%= tarea.estado == 'Pendiente' ? 'estado-pendiente' 
+                                  : tarea.estado == 'Entregado' ? 'estado-en-progreso' 
+                                  : tarea.estado == 'No Entregado' ? 'estado-completado' : '' %>">
                         <%= tarea.estado %> </td>
                       <td> <%= tarea.parcial %> </td>
                       <td> <%= tarea.calificacion %> </td>
@@ -216,9 +216,9 @@
                       <td> <%= tarea.nombre %> </td>
                       <td> <%= tarea.fecha %> </td>
                       <td> <%= tarea.fecha_termina %> </td>
-                      <td class="<%= tarea.estado == 'pendiente' ? 'estado-pendiente' 
-                                  : tarea.estado == 'entregado' ? 'estado-en-progreso' 
-                                  : tarea.estado == 'no entregado' ? 'estado-completado' : '' %>">
+                      <td class="<%= tarea.estado == 'Pendiente' ? 'estado-pendiente' 
+                                  : tarea.estado == 'Entregado' ? 'estado-en-progreso' 
+                                  : tarea.estado == 'No Entregado' ? 'estado-completado' : '' %>">
                         <%= tarea.estado %> </td>
                       <td> <%= tarea.parcial %> </td>
                       <td> <%= tarea.calificacion %> </td>
@@ -342,6 +342,10 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>

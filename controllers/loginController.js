@@ -27,7 +27,6 @@ exports.loginUser = (req, res) => {
       res.render('login', { message: 'Usuario o contraseña incorrectos' });
     }
   });
-
 };
 
 
@@ -44,10 +43,6 @@ exports.showUserProfile = (req, res) => {
 
   res.render('usuarios', { usuario: user });
 };
-
-
-
-
 
 
 exports.createUser = (req, res) => {
@@ -67,6 +62,42 @@ exports.createUser = (req, res) => {
     db.query('INSERT INTO usuarios SET ?', newUser, (err, results) => {
       if (err) throw err;
       res.redirect('/login');
+    });
+  });
+};
+
+exports.editUser = (req, res) => {
+  const userId = req.session.user.id; // Asume que el ID del usuario está almacenado en la sesión
+  const { name, middleName, lastName, carrera, email, phone, username } = req.body;
+  const files = req.file ? req.file.filename : req.session.user.files; // Mantén el archivo existente si no se sube uno nuevo
+
+  if (!username) {
+    res.render('usuarios', { message: 'El username es requerido', usuario: req.session.user });
+    return;
+  }
+
+  const updatedUser = { name, middleName, lastName, carrera, email, phone, username, files };
+
+  db.query('UPDATE usuarios SET ? WHERE id = ?', [updatedUser, userId], (err, results) => {
+    if (err) throw err;
+
+    // Actualiza los datos de la sesión con la nueva información del usuario
+    req.session.user = { ...req.session.user, ...updatedUser };
+    res.redirect('/login/usuarios');
+  });
+};
+
+
+exports.deleteUser = (req, res) => {
+  const userId = req.session.user.id; // Asume que el ID del usuario está almacenado en la sesión
+
+  db.query('DELETE FROM usuarios WHERE id = ?', [userId], (err, results) => {
+    if (err) throw err;
+
+    // Destruir la sesión después de eliminar el usuario
+    req.session.destroy((err) => {
+      if (err) throw err;
+      res.redirect('/');
     });
   });
 };

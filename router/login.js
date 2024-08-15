@@ -25,8 +25,10 @@ router.get('/logout', (req, res) => {
 
 
 
+////Seccion de usuarios
 router.get('/usuarios', loginController.showUserProfile);
-
+router.post('/usuarios/edit/:id', upload.single('file'), loginController.editUser)
+router.get('/usuarios/delete/:id', loginController.deleteUser)
 
 // router.get('/login2', (req, res) => {
 //     res.render('login2', { title: 'Mi Proyecto Parcial 2', routes: router });
